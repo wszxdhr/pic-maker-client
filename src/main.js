@@ -5,8 +5,13 @@ import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
 import App from './App'
 import Home from './components/views/main'
+import api from './api'
+import { ConfirmPlugin } from 'vux'
+Vue.use(ConfirmPlugin)
 
 Vue.use(VueRouter)
+
+Vue.prototype.$api = api
 
 const routes = [{
   path: '/',
