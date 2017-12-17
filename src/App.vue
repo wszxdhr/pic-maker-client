@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <drawer width="200px"
-            height="100%"
             :show.sync="showDrawer"
             show-mode="push"
             :drawer-style="{'background-color':'#35495e', width: '200px', height: '100%'}">
