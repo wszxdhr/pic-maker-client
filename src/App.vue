@@ -5,8 +5,9 @@
             show-mode="push"
             :drawer-style="{'background-color':'#35495e', width: '200px', height: '100%'}">
       <div slot="drawer">
-        <group title="D">
-          <cell title="DD"></cell>
+        <group title="导出">
+          <cell title="导出数据" is-link @click.native="makeConfig"></cell>
+          <cell title="生成图片" is-link></cell>
         </group>
       </div>
       <view-box ref="viewBox" body-padding-top="0px" body-padding-bottom="55px">
@@ -30,6 +31,9 @@ export default {
   data: () => ({
     showDrawer: false
   }),
+  methods: {
+    makeConfig () {}
+  },
   components: {
     Drawer, Group, Cell, XHeader, commonHeader, ViewBox
   },

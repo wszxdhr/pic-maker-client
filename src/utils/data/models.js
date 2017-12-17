@@ -9,7 +9,7 @@ export default {
           'style': {
             'width': '100%',
             'height': '50vw',
-            'background-image': 'url(https://www.google.com.hk/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png)',
+            'background-image': 'url(http://desk.fd.zol-img.com.cn/t_s960x600c5/g3/M0A/0F/09/Cg-4WFRplp2IYqiNACQ0TQPPChQAARbPQEM84oAJDRl464.jpg)',
             'background-repeat': 'no-repeat',
             'background-position': 'center',
             'background-size': 'contain'
@@ -37,7 +37,7 @@ export default {
             'attr': {
               'style': {
                 'width': '50%',
-                'background-image': 'url(https://www.google.com.hk/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png)',
+                'background-image': 'url(http://desk.fd.zol-img.com.cn/t_s960x600c5/g3/M0A/0F/09/Cg-4WFRplp2IYqiNACQ0TQPPChQAARbPQEM84oAJDRl464.jpg)',
                 'background-repeat': 'no-repeat',
                 'background-position': 'center',
                 'background-size': 'cover'
@@ -51,7 +51,7 @@ export default {
             'attr': {
               'style': {
                 'width': '50%',
-                'background-image': 'url(https://www.google.com.hk/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png)',
+                'background-image': 'url(http://desk.fd.zol-img.com.cn/t_s960x600c5/g3/M0A/0F/09/Cg-4WFRplp2IYqiNACQ0TQPPChQAARbPQEM84oAJDRl464.jpg)',
                 'background-repeat': 'no-repeat',
                 'background-position': 'center',
                 'background-size': 'cover'
@@ -68,7 +68,7 @@ export default {
           'style': {
             'width': '100%',
             'height': '50vw',
-            'background-image': 'url(https://www.google.com.hk/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png)',
+            'background-image': 'url(http://desk.fd.zol-img.com.cn/t_s960x600c5/g3/M0A/0F/09/Cg-4WFRplp2IYqiNACQ0TQPPChQAARbPQEM84oAJDRl464.jpg)',
             'background-repeat': 'no-repeat',
             'background-position': 'center',
             'background-size': 'cover'
