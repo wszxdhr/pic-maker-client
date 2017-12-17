@@ -1,7 +1,6 @@
 module.exports = {
   "apps" : [{
-    "name" : "node-pic-maker",
-    "script" : "bin/www",
+    "name" : "pic-maker-client",
     "env": {
       "COMMON_VARIABLE": "true"
     },
@@ -14,9 +13,9 @@ module.exports = {
       "user" : "root",
       "host" : "anymelon.com",
       "ref"  : "origin/master",
-      "repo" : "https://github.com/wszxdhr/node-pic-maker.git",
-      "path" : "/data/wwwroot/node-pic-maker",
-      "post-deploy" : "cd /data/wwwroot/node-pic-maker && cnpm install && pm2 start pm2.json --env production"
+      "repo" : "https://github.com/wszxdhr/pic-maker-client.git",
+      "path" : "/data/wwwroot/pic-maker-client",
+      "post-deploy" : "cd /data/wwwroot/pic-maker-client && cnpm install && npm run build"
     }
   }
 }
