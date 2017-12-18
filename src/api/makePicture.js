@@ -1,7 +1,7 @@
 import axios from './interceptor'
 
 export default {
-  makePicture: (conf) => axios.post('http://screenshot.anymelon.com/puzzle', {
+  makePicture: (conf) => axios.post('/puzzle', {
     elements: conf
   })
 }

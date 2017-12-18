@@ -4,7 +4,8 @@ import Vue from 'vue'
 import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
 import App from './App'
-import Home from './components/views/main'
+import Home from './components/views/home/index.vue'
+import Preview from './components/views/preview/index.vue'
 import api from './api'
 import { ConfirmPlugin } from 'vux'
 Vue.use(ConfirmPlugin)
@@ -16,6 +17,12 @@ Vue.prototype.$api = api
 const routes = [{
   path: '/',
   component: Home
+}, {
+  path: '/preview',
+  component: Preview,
+  meta: {
+    hideSwipeout: true
+  }
 }]
 
 const router = new VueRouter({

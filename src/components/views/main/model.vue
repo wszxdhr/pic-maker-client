@@ -2,7 +2,7 @@
   <div class="model-view">
     <swipeout>
       <swipeout-item v-for="ele in modelData.elements" :key="ele.id" ref="swipeoutItem" :right-menu-width="210" :sensitivity="15">
-        <div slot="right-menu">
+        <div slot="right-menu" v-if="!$route.meta.hideSwipeout">
           <swipeout-button type="primary" :width="70" @click.native="editItem(ele)" :key="ele.id">编辑</swipeout-button>
           <swipeout-button type="warn" :width="70">删除</swipeout-button>
         </div>

@@ -10,7 +10,15 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/puzzle': {
+        target: 'http://screenshot.anymelon.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/puzzle': '/puzzle'
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
