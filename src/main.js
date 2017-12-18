@@ -15,10 +15,16 @@ Vue.use(VueRouter)
 Vue.prototype.$api = api
 
 const routes = [{
-  path: '/',
+  path: '/main',
   component: Home
 }, {
   path: '/preview',
+  component: Preview,
+  meta: {
+    hideSwipeout: true
+  }
+}, {
+  path: '/',
   component: Preview,
   meta: {
     hideSwipeout: true
