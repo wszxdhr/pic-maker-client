@@ -15,7 +15,11 @@
 </script>
 
 <style type="text/scss" lang="scss">
-  html, body, #app {
+  html, body {
     overflow: scroll;
+  }
+  #app {
+    height: auto;
+    overflow: visible;
   }
 </style>

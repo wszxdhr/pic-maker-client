@@ -1,7 +1,5 @@
 import axios from './interceptor'
 
 export default {
-  makePicture: (conf) => axios.post('/puzzle', {
-    elements: conf
-  })
+  makePicture: (conf) => axios.post('/puzzle', conf)
 }

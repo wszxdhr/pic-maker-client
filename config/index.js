@@ -13,9 +13,17 @@ module.exports = {
     proxyTable: {
       '/puzzle': {
         target: 'http://screenshot.anymelon.com',
+        // target: 'http://screenshot.anymelon.com',
         changeOrigin: true,
         pathRewrite: {
           '^/puzzle': '/puzzle'
+        }
+      },
+      '/files': {
+        target: 'http://screenshot.anymelon.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/files': '/files'
         }
       }
     },

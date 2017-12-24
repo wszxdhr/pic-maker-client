@@ -4,8 +4,8 @@ import Vue from 'vue'
 import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
 import App from './App'
-import Home from './components/views/home/index.vue'
-import Preview from './components/views/preview/index.vue'
+import Edit from './components/views/main/index.vue'
+import Welcome from './components/views/welcome/index.vue'
 import api from './api'
 import { ConfirmPlugin } from 'vux'
 Vue.use(ConfirmPlugin)
@@ -15,20 +15,11 @@ Vue.use(VueRouter)
 Vue.prototype.$api = api
 
 const routes = [{
-  path: '/main',
-  component: Home
-}, {
-  path: '/preview',
-  component: Preview,
-  meta: {
-    hideSwipeout: true
-  }
-}, {
   path: '/',
-  component: Preview,
-  meta: {
-    hideSwipeout: true
-  }
+  component: Welcome
+}, {
+  path: '/edit/:id',
+  component: Edit
 }]
 
 const router = new VueRouter({

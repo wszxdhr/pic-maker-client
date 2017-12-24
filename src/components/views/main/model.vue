@@ -7,10 +7,14 @@
           <swipeout-button type="warn" :width="70">删除</swipeout-button>
         </div>
 
-        <!--<div slot="left-menu">-->
-          <!--<swipeout-button type="primary">4</swipeout-button>-->
-          <!--<swipeout-button type="warn">5</swipeout-button>-->
-        <!--</div>-->
+        <div slot="left-menu">
+          <swipeout-button @click.native="add('up')" :width="50" type="primary">
+            添加↑
+          </swipeout-button>
+          <swipeout-button @click.native="add('down')" :width="50" type="warn">
+            添加↓
+          </swipeout-button>
+        </div>
 
         <div slot="content" class="demo-content vux-1px-b" style="min-height: 30px;">
           <model-element :element="ele"></model-element>
@@ -22,7 +26,7 @@
 </template>
 
 <script type="text/babel">
-  import { Swipeout, SwipeoutItem, SwipeoutButton } from 'vux'
+  import { Swipeout, SwipeoutItem, SwipeoutButton, XButton } from 'vux'
   import ModelElement from './modelElement.vue'
   import modelEdit from './modelEdit.vue'
   export default {
@@ -32,7 +36,7 @@
       currentElement: {}
     }),
     components: {
-      Swipeout, SwipeoutItem, SwipeoutButton, ModelElement, modelEdit
+      Swipeout, SwipeoutItem, SwipeoutButton, ModelElement, modelEdit, XButton
     },
     methods: {
       editItem (ele) {
@@ -53,4 +57,15 @@
   }
 </script>
 
-<style type="text/scss" lang="scss"></style>
+<style type="text/scss" lang="scss">
+  .model-view {
+    .add-btn {
+      display: block;
+      width: 100%;
+      height: 50%;
+      margin-top: 0!important;
+      border-radius: 0;
+
+    }
+  }
+</style>
