@@ -16,9 +16,11 @@ Vue.prototype.$api = api
 
 const routes = [{
   path: '/',
+  name: 'root',
   component: Welcome
 }, {
   path: '/edit/:id',
+  name: 'edit',
   component: Edit
 }]
 

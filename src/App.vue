@@ -6,9 +6,11 @@
             :drawer-style="{'background-color':'#35495e', width: '200px', height: '100%'}">
       <div slot="drawer">
         <group title="选择模板">
-          <cell title="模板1" is-link @click.native="makeConfig"></cell>
+          <cell title="模板1" @click.native="showDrawer = false" :link="{name: 'edit', params: {id: 'xhs-model1'}}" is-link></cell>
+          <cell title="模板2" @click.native="showDrawer = false" :link="{name: 'edit', params: {id: 'xhs-model2'}}" is-link></cell>
           <cell title="3x3正方形" is-link></cell>
           <cell title="4x4正方形" is-link></cell>
+          <cell title="封面纯文字" @click.native="showDrawer = false" :link="{name: 'edit', params: {id: 'text-square'}}" is-link></cell>
           <cell title="自定义模板" is-link></cell>
         </group>
         <group title="其他">
@@ -35,6 +37,9 @@
   import { Drawer, Group, Cell, XHeader, ViewBox } from 'vux'
   export default {
     name: 'app',
+    data: () => ({
+      showDrawer: false
+    }),
     methods: {
       makeConfig () {}
     },
