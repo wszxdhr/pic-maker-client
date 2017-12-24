@@ -29,11 +29,13 @@
         </transition>
       </view-box>
     </drawer>
+    <scroll-bar :scrollRef="$refs.viewBox"></scroll-bar>
   </div>
 </template>
 
 <script>
   import commonHeader from './components/layout/commonHeader.vue'
+  import scrollBar from './components/layout/scrollBar/index.vue'
   import { Drawer, Group, Cell, XHeader, ViewBox } from 'vux'
   export default {
     name: 'app',
@@ -46,7 +48,7 @@
     created () {},
     watch: {},
     components: {
-      Drawer, Group, Cell, XHeader, commonHeader, ViewBox
+      Drawer, Group, Cell, XHeader, commonHeader, ViewBox, scrollBar
     }
   }
 </script>
