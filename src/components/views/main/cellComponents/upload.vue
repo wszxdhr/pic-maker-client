@@ -1,5 +1,6 @@
 <script type="text/babel">
   import { Cell } from 'vux'
+  import uploadFunc from '@/components/common/modules/upload'
   import attrMap from '../../../../config/attrMap'
   export default {
     name: 'mainComponentUpload',
@@ -60,20 +61,14 @@
               type: 'file'
             },
             on: {
-              change (val) {
+              async change (val) {
                 let files = val.target.files
                 let file = files[0]
-                if (file && files) {
-                  let reader = new FileReader()
-                  reader.onload = (readerEvt) => {
-                    let binaryString = readerEvt.target.result
-                    let base64 = btoa(binaryString)
-                    console.log(base64.length)
-                    attrMap[element.prop].setter(element.ele, `data:${file.type};base64,${base64}`)
-                  }
-                  reader.readAsBinaryString(file)
+                let picUrl = await uploadFunc(file)
+                console.log('picUrl = ', picUrl)
+                if (picUrl) {
+                  attrMap[element.prop].setter(element.ele, picUrl)
                 }
-                protoVal = currentVal
               }
             }
           })

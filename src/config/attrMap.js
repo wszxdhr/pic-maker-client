@@ -1,12 +1,12 @@
 export default {
   'attr.style.background-image': {
     getter (ele) {
-      let regLeft = /^url\(/
-      let regRight = /\)$/
+      let regLeft = /^url\("/
+      let regRight = /"\)$/
       return ele.attr.style['background-image'].replace(regLeft, '').replace(regRight, '')
     },
     setter (ele, val) {
-      ele.attr.style['background-image'] = `url(${val})`
+      ele.attr.style['background-image'] = `url("${val}")`
     },
     name: '图片链接',
     component: 'upload'

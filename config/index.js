@@ -19,6 +19,14 @@ module.exports = {
           '^/puzzle': '/puzzle'
         }
       },
+      '/uptoken': {
+        target: 'http://screenshot.anymelon.com',
+        // target: 'http://screenshot.anymelon.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/uptoken': '/uptoken'
+        }
+      },
       '/files': {
         target: 'http://screenshot.anymelon.com',
         changeOrigin: true,
