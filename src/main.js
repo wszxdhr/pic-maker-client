@@ -7,11 +7,13 @@ import App from './App'
 import Edit from './components/views/main/index.vue'
 import Welcome from './components/views/welcome/index.vue'
 import api from './api'
+import eventBus from './components/tools/eventBus'
 import { ConfirmPlugin } from 'vux'
 Vue.use(ConfirmPlugin)
 
 Vue.use(VueRouter)
 
+Vue.prototype.$bus = eventBus
 Vue.prototype.$api = api
 
 const routes = [{

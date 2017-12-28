@@ -1,26 +1,8 @@
 <template>
   <div class="model-view">
-    <swipeout>
-      <swipeout-item v-for="ele in modelData.elements" :key="ele.id" ref="swipeoutItem" :right-menu-width="210" :sensitivity="15">
-        <div slot="right-menu" v-if="!$route.meta.hideSwipeout">
-          <swipeout-button type="primary" :width="70" @click.native="editItem(ele)" :key="ele.id">编辑</swipeout-button>
-          <swipeout-button type="warn" :width="70">删除</swipeout-button>
-        </div>
-
-        <div slot="left-menu">
-          <swipeout-button @click.native="add('up')" :width="50" type="primary">
-            添加↑
-          </swipeout-button>
-          <swipeout-button @click.native="add('down')" :width="50" type="warn">
-            添加↓
-          </swipeout-button>
-        </div>
-
-        <div slot="content" class="demo-content vux-1px-b" style="min-height: 30px;">
-          <model-element :element="ele"></model-element>
-        </div>
-      </swipeout-item>
-    </swipeout>
+    <div @click="editItem(ele)" :key="ele.id" v-for="ele in modelData.elements">
+      <model-element :element="ele"></model-element>
+    </div>
     <model-edit :element="currentElement" :show="showEdit" @onClose="showEdit = false"></model-edit>
   </div>
 </template>

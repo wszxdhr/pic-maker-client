@@ -20,9 +20,10 @@
         </group>
       </div>
       <view-box ref="viewBox" body-padding-top="0px" body-padding-bottom="55px">
-        <x-header slot="header" :right-options="{showMore: true}" @on-click-more="showMenus = true" v-show="!$route.query.noHeader">
+        <x-header slot="header" @on-click-more="showMenus = true" v-show="!$route.query.noHeader">
           <span>小芳芳的拼图</span>
           <x-icon @click="showDrawer = true" slot="overwrite-left" type="navicon" size="35" style="fill:#fff;position:relative;top:-8px;left:-3px;"></x-icon>
+          <x-icon slot="right" @click="$bus.$on('addElement')" type="ios-plus-empty" size="35" style="fill:#fff;position:relative;top:-8px;right:-3px;"></x-icon>
         </x-header>
         <transition>
           <router-view></router-view>
