@@ -1,5 +1,5 @@
 <script type="text/babel">
-  import { Cell } from 'vux'
+  import { Cell, XButton, Box } from 'vux'
   import uploadFunc from '@/components/common/modules/upload'
   import attrMap from '../../../../config/attrMap'
   export default {
@@ -20,56 +20,72 @@
       let currentVal = getVal()
       let protoVal = currentVal
       console.log(protoVal)
-      return createElement(Cell, {
-        props: {
-          title: this.title,
-          primary: 'content'
-        },
-        'class': ['main-component-upload'],
-        on: {
-          'on-change': (val) => {
-            currentVal = val
-          }
-        }
-      }, [
-        createElement('img', {
-          attrs: {
-            src: currentVal
+      return createElement('div', {}, [
+        createElement(Cell, {
+          props: {
+            title: this.title,
+            primary: 'content'
           },
-          slot: 'icon',
-          'class': ['preview-icon']
-        }),
-        createElement('p', {
-          slot: 'inline-desc',
-          domProps: {
-            innerHTML: currentVal ? '当前有图，请覆盖' : '当前为空，请上传'
+          'class': ['main-component-upload'],
+          on: {
+            'on-change': (val) => {
+              currentVal = val
+            }
           }
-        }),
-        createElement('div', {
-          'class': ['upload-btn weui-btn weui-btn_mini weui-btn_primary'],
-          slot: 'default'
         }, [
-          createElement('input', {
-            props: {
-              type: 'primary',
-              mini: true
-            },
-            'class': [
-              'upload-input'
-            ],
+          createElement('div', {
             attrs: {
-              type: 'file'
+              style: `background-image: ${currentVal}; background-position: center; background-size: contain; background-repeat: no-repeat;`
             },
-            on: {
-              async change (val) {
-                let files = val.target.files
-                let file = files[0]
-                let picUrl = await uploadFunc(file)
-                console.log('picUrl = ', picUrl)
-                if (picUrl) {
-                  attrMap[element.prop].setter(element.ele, picUrl)
+            slot: 'icon',
+            'class': ['preview-icon']
+          }),
+          createElement('p', {
+            slot: 'inline-desc',
+            domProps: {
+              innerHTML: currentVal ? '当前有图，请覆盖' : '当前为空，请上传'
+            }
+          }),
+          createElement('div', {
+            'class': ['upload-btn weui-btn weui-btn_mini weui-btn_primary'],
+            slot: 'default'
+          }, [
+            createElement('input', {
+              props: {
+                type: 'primary',
+                mini: true
+              },
+              'class': [
+                'upload-input'
+              ],
+              attrs: {
+                type: 'file'
+              },
+              on: {
+                async change (val) {
+                  let files = val.target.files
+                  let file = files[0]
+                  let picUrl = await uploadFunc(file)
+                  console.log('picUrl = ', picUrl)
+                  if (picUrl) {
+                    attrMap[element.prop].setter(element.ele, picUrl)
+                  }
                 }
               }
+            })
+          ])
+        ]),
+        createElement(Box, {
+          props: {
+            gap: '10px 10px'
+          }
+        }, [
+          createElement(XButton, {
+            props: {
+              type: 'warn'
+            },
+            domProps: {
+              innerHTML: '删除背景图'
             }
           })
         ])

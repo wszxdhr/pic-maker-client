@@ -6,10 +6,12 @@ import VueRouter from 'vue-router'
 import App from './App'
 import Edit from './components/views/main/index.vue'
 import Welcome from './components/views/welcome/index.vue'
+import modelList from './components/views/modelList/index.vue'
 import api from './api'
 import eventBus from './components/tools/eventBus'
-import { ConfirmPlugin } from 'vux'
+import { ConfirmPlugin, ToastPlugin } from 'vux'
 Vue.use(ConfirmPlugin)
+Vue.use(ToastPlugin)
 
 Vue.use(VueRouter)
 
@@ -24,6 +26,14 @@ const routes = [{
   path: '/edit/:id',
   name: 'edit',
   component: Edit
+}, {
+  path: '/viewModels',
+  name: 'viewModels',
+  component: modelList
+}, {
+  path: '/cloneModel',
+  name: 'cloneModel',
+  component: modelList
 }]
 
 const router = new VueRouter({

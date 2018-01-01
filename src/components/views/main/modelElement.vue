@@ -5,9 +5,11 @@
     render (createElement) {
       let htmlFilter = (str) => str.replace(/\\n/g, '</br>').replace(/\s/g, '&nbsp;')
       let childList = []
+      let attrs = this.element.attr || {}
+      console.log(attrs)
       let opts = {
-        attrs: this.element.attr,
-        style: this.element.attr.style || {},
+        attrs,
+        style: attrs.style || {},
         class: this.element.className || [],
         domProps: {}
       }
@@ -20,7 +22,7 @@
           }))
         }
       } else {
-        opts.domProps.innerHTML = htmlFilter(this.element.innerHTML)
+        opts.domProps.innerHTML = htmlFilter(this.element.innerHTML || '')
       }
       return createElement(this.element.tag, opts, childList)
     },

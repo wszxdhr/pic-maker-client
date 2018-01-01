@@ -1,9 +1,15 @@
 <template>
   <div class="model-view">
-    <div @click="editItem(ele)" :key="ele.id" v-for="ele in modelData.elements">
-      <model-element :element="ele"></model-element>
+    <div :class="['plus-btn', {show: showAddBtn}]" @click="addElement(-1)">
+      <x-icon type="ios-plus" size="24"></x-icon>
     </div>
-    <model-edit :element="currentElement" :show="showEdit" @onClose="showEdit = false"></model-edit>
+    <div class="model-element-wrap" :key="ele.key" v-for="(ele, $index) in modelData.elements">
+      <model-element @click.native="editItem(ele, $index)" :element="ele"></model-element>
+      <div :class="['plus-btn', {show: showAddBtn}]" @click="addElement($index)">
+        <x-icon type="ios-plus" size="24"></x-icon>
+      </div>
+    </div>
+    <model-edit @delete="deleteEle" :element="currentElement" :show="showEdit" @onClose="showEdit = false"></model-edit>
   </div>
 </template>
 
@@ -15,15 +21,29 @@
     name: 'modelView',
     data: () => ({
       showEdit: false,
-      currentElement: {}
+      currentElement: {},
+      currentIndex: -1,
+      showAddBtn: false
     }),
     components: {
       Swipeout, SwipeoutItem, SwipeoutButton, ModelElement, modelEdit, XButton
     },
+    created () {
+      this.$bus.$on('showAddBtn', (isShow) => {
+        this.showAddBtn = isShow
+      })
+    },
     methods: {
-      editItem (ele) {
+      editItem (ele, idx) {
         this.currentElement = ele
+        this.currentIndex = idx
         this.showEdit = true
+      },
+      addElement (idx) {
+        this.$emit('addElement', idx)
+      },
+      deleteEle () {
+        this.modelData.elements.splice(this.currentIndex, 1)
       }
     },
     props: {
@@ -48,6 +68,24 @@
       margin-top: 0!important;
       border-radius: 0;
 
+    }
+    .model-element-wrap {
+      background-color: #ffffff;
+    }
+    .plus-btn {
+      text-align: center;
+      padding: 5px;
+      transition: height .5s, padding .5s;
+      height: 30px;
+      overflow: hidden;
+      .vux-x-icon {
+        fill: #10AEFF;
+      }
+      &:not(.show) {
+        height: 0;
+        padding: 0;
+        pointer-events: none;
+      }
     }
   }
 </style>

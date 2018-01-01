@@ -14,8 +14,8 @@
           <cell title="自定义模板" is-link></cell>
         </group>
         <group title="其他">
-          <cell title="编辑组件" is-link @click.native="makeConfig"></cell>
-          <cell title="新增组件" is-link @click.native="makeConfig"></cell>
+          <cell title="编辑组件" is-link @click.native="showDrawer = false" :link="{name: 'viewModels'}"></cell>
+          <cell title="新增组件" is-link @click.native="showDrawer = false" :link="{name: 'cloneModel'}"></cell>
           <cell title="浏览作品" is-link @click.native="makeConfig"></cell>
         </group>
       </div>
@@ -23,7 +23,7 @@
         <x-header slot="header" @on-click-more="showMenus = true" v-show="!$route.query.noHeader">
           <span>小芳芳的拼图</span>
           <x-icon @click="showDrawer = true" slot="overwrite-left" type="navicon" size="35" style="fill:#fff;position:relative;top:-8px;left:-3px;"></x-icon>
-          <x-icon slot="right" @click="$bus.$on('addElement')" type="ios-plus-empty" size="35" style="fill:#fff;position:relative;top:-8px;right:-3px;"></x-icon>
+          <x-icon v-if="$route.name === 'edit'" :class="[{'is-close': isShowAddBtn}, 'header-add-btn']" slot="right" @click.native="showAddBtn" type="ios-plus-empty" size="35" style="fill:#fff;position:relative;top:-8px;right:-3px;"></x-icon>
         </x-header>
         <transition>
           <router-view></router-view>
@@ -41,13 +41,22 @@
   export default {
     name: 'app',
     data: () => ({
-      showDrawer: false
+      showDrawer: false,
+      isShowAddBtn: false
     }),
     methods: {
-      makeConfig () {}
+      makeConfig () {},
+      showAddBtn () {
+        this.isShowAddBtn = !this.isShowAddBtn
+        this.$bus.$emit('showAddBtn', this.isShowAddBtn)
+      }
     },
     created () {},
-    watch: {},
+    watch: {
+      '$route' () {
+        this.isShowAddBtn = false
+      }
+    },
     components: {
       Drawer, Group, Cell, XHeader, commonHeader, ViewBox, scrollBar
     }
@@ -71,4 +80,12 @@ body {
   width: 100%;
   top: 46px;
 }
+  .header-add-btn {
+    transition: transform .3s;
+    transform: rotate(0deg);
+
+    &.is-close {
+      transform: rotate(45deg);
+    }
+  }
 </style>
