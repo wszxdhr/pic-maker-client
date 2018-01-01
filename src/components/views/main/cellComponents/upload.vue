@@ -1,5 +1,6 @@
 <script type="text/babel">
   import { Cell, XButton, Box } from 'vux'
+  import Vue from 'vue'
   import uploadFunc from '@/components/common/modules/upload'
   import attrMap from '../../../../config/attrMap'
   export default {
@@ -66,7 +67,6 @@
                   let files = val.target.files
                   let file = files[0]
                   let picUrl = await uploadFunc(file)
-                  console.log('picUrl = ', picUrl)
                   if (picUrl) {
                     attrMap[element.prop].setter(element.ele, picUrl)
                   }
@@ -77,7 +77,7 @@
         ]),
         createElement(Box, {
           props: {
-            gap: '10px 10px'
+            gap: '0 10px 10px 10px'
           }
         }, [
           createElement(XButton, {
@@ -86,6 +86,17 @@
             },
             domProps: {
               innerHTML: '删除背景图'
+            },
+            nativeOn: {
+              click () {
+                Vue.$vux.confirm.show({
+                  title: '确认删除吗？',
+                  onCancel () {},
+                  onConfirm: () => {
+                    attrMap[element.prop].setter(element.ele, '')
+                  }
+                })
+              }
             }
           })
         ])

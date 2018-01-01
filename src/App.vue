@@ -6,11 +6,11 @@
             :drawer-style="{'background-color':'#35495e', width: '200px', height: '100%'}">
       <div slot="drawer">
         <group title="选择模板">
-          <cell title="模板1" @click.native="showDrawer = false" :link="{name: 'edit', params: {id: 'xhs-model1'}}" is-link></cell>
+          <cell title="模板1" @click.native="showDrawer = false" :link="{name: 'edit', params: {id: '5a488cffd38d2ffed9adda12'}}" is-link></cell>
           <cell title="模板2" @click.native="showDrawer = false" :link="{name: 'edit', params: {id: 'xhs-model2'}}" is-link></cell>
           <cell title="3x3正方形" is-link></cell>
           <cell title="4x4正方形" is-link></cell>
-          <cell title="封面纯文字" @click.native="showDrawer = false" :link="{name: 'edit', params: {id: 'text-square'}}" is-link></cell>
+          <cell title="封面纯文字" @click.native="showDrawer = false" :link="{name: 'edit', params: {id: '5a4a5487f97c5d01898670d6'}}" is-link></cell>
           <cell title="自定义模板" is-link></cell>
         </group>
         <group title="其他">
@@ -30,13 +30,11 @@
         </transition>
       </view-box>
     </drawer>
-    <scroll-bar :scrollRef="$refs.viewBox"></scroll-bar>
   </div>
 </template>
 
 <script>
   import commonHeader from './components/layout/commonHeader.vue'
-  import scrollBar from './components/layout/scrollBar/index.vue'
   import { Drawer, Group, Cell, XHeader, ViewBox } from 'vux'
   export default {
     name: 'app',
@@ -58,7 +56,7 @@
       }
     },
     components: {
-      Drawer, Group, Cell, XHeader, commonHeader, ViewBox, scrollBar
+      Drawer, Group, Cell, XHeader, commonHeader, ViewBox
     }
   }
 </script>

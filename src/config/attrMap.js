@@ -41,6 +41,16 @@ export default {
     name: '图片链接',
     component: 'upload'
   },
+  'padding': {
+    getter (ele) {
+      return ele.attr.style.padding
+    },
+    setter (ele, val) {
+      ele.attr.style.padding = val
+    },
+    name: '内边距',
+    component: 'number'
+  },
   'attr.style.height': {
     getter (ele) {
       return ele.attr.style.height
@@ -49,7 +59,7 @@ export default {
       ele.attr.style.height = val
     },
     name: '高度',
-    component: 'textInput'
+    component: 'number'
   },
   'attr.style.color': {
     getter (ele) {
@@ -59,7 +69,33 @@ export default {
       ele.attr.style.color = val
     },
     name: '字体颜色',
-    component: 'textInput'
+    component: 'color'
+  },
+  'attr.style.text-shadow.color': {
+    getter (ele) {
+      let protoText = ele.attr.style['text-shadow']
+      let colorReg1 = /rgba\([\s\S]*?\)/
+      let colorReg2 = /#[a-zA-Z0-9]{6}/
+      if (colorReg1.test(protoText)) {
+        return protoText.match(colorReg1)[0]
+      }
+      if (colorReg2.test(protoText)) {
+        return protoText.match(colorReg2)[0]
+      }
+    },
+    setter (ele, val) {
+      let protoText = ele.attr.style['text-shadow']
+      let colorReg1 = /rgba\([\s\S]*?\)/
+      let colorReg2 = /#[a-zA-Z0-9]{6}/
+      if (colorReg1.test(protoText)) {
+        ele.attr.style['text-shadow'] = protoText.replace(colorReg1, val)
+      }
+      if (colorReg2.test(protoText)) {
+        ele.attr.style['text-shadow'] = protoText.replace(colorReg1, val)
+      }
+    },
+    name: '阴影颜色',
+    component: 'color'
   },
   'attr.style.font-size': {
     getter (ele) {
@@ -69,7 +105,7 @@ export default {
       ele.attr.style['font-size'] = val
     },
     name: '字体大小',
-    component: 'textInput'
+    component: 'number'
   },
   'attr.style.top': {
     getter (ele) {
@@ -79,7 +115,7 @@ export default {
       ele.attr.style.top = val
     },
     name: '上边距',
-    component: 'textInput'
+    component: 'number'
   },
   'attr.style.left': {
     getter (ele) {
@@ -89,7 +125,7 @@ export default {
       ele.attr.style.left = val
     },
     name: '左边距',
-    component: 'textInput'
+    component: 'number'
   },
   'innerHTML': {
     getter (ele) {

@@ -32,6 +32,8 @@
   import TextInput from './cellComponents/text.vue'
   import Upload from './cellComponents/upload.vue'
   import TextArea from './cellComponents/textarea.vue'
+  import Number from './cellComponents/number.vue'
+  import Color from './cellComponents/color.vue'
   let attrMap = config.attrMap
   export default {
     name: 'modelEdit',
@@ -49,7 +51,7 @@
       showSelf: false
     }),
     components: {
-      textMulti: TextArea, upload: Upload, textInput: TextInput, Popup, Group, Cell, XButton, Box, modelElement, Flexbox, FlexboxItem
+      color: Color, number: Number, textMulti: TextArea, upload: Upload, textInput: TextInput, Popup, Group, Cell, XButton, Box, modelElement, Flexbox, FlexboxItem
     },
     methods: {
       getCellTitle ({prop}) {
